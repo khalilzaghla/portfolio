@@ -5,7 +5,6 @@ import {
   Cpu, 
   Monitor, 
   ArrowRight,
-  ArrowDown,
   BoxSelect,
   CloudCog
 } from "lucide-react";
@@ -44,14 +43,14 @@ export function ArchitectureDiagram({ nodes, edges }: ArchitectureDiagramProps) 
 
   return (
     <div className="w-full overflow-x-auto pb-4 custom-scrollbar">
-      <div className="flex flex-col md:flex-row items-center justify-start gap-4 min-w-max p-4 rounded-xl bg-zinc-900/50 border border-zinc-800">
+      <div className="flex flex-row items-center justify-start gap-4 min-w-max p-4 rounded-xl bg-zinc-900/50 border border-zinc-800">
         {nodes.map((node, index) => {
           // Find if there's an edge from this node to the next one
           const nextNode = nodes[index + 1];
           const edge = nextNode ? edges.find(e => e.from === node.id && e.to === nextNode.id) : null;
 
           return (
-            <div key={node.id} className="flex flex-col md:flex-row items-center gap-4">
+            <div key={node.id} className="flex flex-row items-center gap-4">
               <div className={`flex flex-col items-center justify-center p-4 w-40 h-28 rounded-lg border bg-zinc-950/80 shadow-sm ${getDomainColor(node.domain)} transition-colors duration-300`}>
                 <div className="mb-2 p-2 rounded-full bg-zinc-900 border border-zinc-800/50">
                   {getIcon(node.type)}
@@ -64,11 +63,10 @@ export function ArchitectureDiagram({ nodes, edges }: ArchitectureDiagramProps) 
               {/* Connector */}
               {index < nodes.length - 1 && (
                 <div className="flex flex-col items-center justify-center gap-1 opacity-60">
-                  <span className="text-[10px] uppercase tracking-wider text-zinc-500 hidden md:block w-24 text-center">
+                  <span className="text-[10px] uppercase tracking-wider text-zinc-500 w-24 text-center">
                     {edge?.label || ""}
                   </span>
-                  <ArrowRight className="w-5 h-5 text-zinc-600 hidden md:block" />
-                  <ArrowDown className="w-5 h-5 text-zinc-600 block md:hidden my-2" />
+                  <ArrowRight className="w-5 h-5 text-zinc-600" />
                 </div>
               )}
             </div>

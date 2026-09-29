@@ -4,10 +4,6 @@ import { useState } from "react";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import {
   Code2,
-  Cpu,
-  Layers,
-  CheckCircle2,
-  AlertCircle,
   ArrowUpRight,
   FileText
 } from "lucide-react";
@@ -209,53 +205,6 @@ export function Projects() {
                     {project.summary}
                   </p>
 
-                  {/* Engineering Breakdown: 2 Columns */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs sm:text-sm text-muted-foreground">
-                    {/* Left Column: Problem & Built */}
-                    <div className="flex flex-col gap-4 p-4 rounded-md bg-secondary/20 border border-border/40">
-                      <div>
-                        <span className="text-[11px] font-mono uppercase tracking-wider text-foreground font-semibold flex items-center gap-1.5 mb-1.5">
-                          <AlertCircle className="w-3.5 h-3.5 text-amber-400" aria-hidden="true" />
-                          Problem &amp; Physical Constraints
-                        </span>
-                        <p className="leading-relaxed text-muted-foreground">{project.problem}</p>
-                      </div>
-
-                      <div className="pt-3 border-t border-border/30">
-                        <span className="text-[11px] font-mono uppercase tracking-wider text-foreground font-semibold flex items-center gap-1.5 mb-1.5">
-                          <Cpu className="w-3.5 h-3.5 text-cyan-400" aria-hidden="true" />
-                          System Implementation
-                        </span>
-                        <p className="leading-relaxed text-muted-foreground">{project.built}</p>
-                      </div>
-                    </div>
-
-                    {/* Right Column: Technical Approach & Key Architectural Decision */}
-                    <div className="flex flex-col gap-4 p-4 rounded-md bg-secondary/20 border border-border/40">
-                      <div>
-                        <span className="text-[11px] font-mono uppercase tracking-wider text-foreground font-semibold flex items-center gap-1.5 mb-1.5">
-                          <Layers className="w-3.5 h-3.5 text-emerald-400" aria-hidden="true" />
-                          Technical Approach
-                        </span>
-                        <p className="leading-relaxed text-muted-foreground">
-                          {project.technicalApproach}
-                        </p>
-                      </div>
-
-                      {project.keyArchitectureDecision && (
-                        <div className="pt-3 border-t border-border/30">
-                          <span className="text-[11px] font-mono uppercase tracking-wider text-foreground font-semibold flex items-center gap-1.5 mb-1.5">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" aria-hidden="true" />
-                            Key Architecture Decision
-                          </span>
-                          <p className="leading-relaxed text-muted-foreground">
-                            {project.keyArchitectureDecision}
-                          </p>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
                   {/* Verified Experimental Evidence & Metrics */}
                   {project.metrics.length > 0 && (
                     <div className="flex flex-col gap-2 pt-2">
@@ -282,16 +231,6 @@ export function Projects() {
                           </div>
                         ))}
                       </div>
-                    </div>
-                  )}
-
-                  {/* Limitations Callout (where documented) */}
-                  {project.limitations && (
-                    <div className="px-3.5 py-2.5 rounded-md bg-secondary/30 border border-border/40 text-xs text-muted-foreground flex items-start gap-2">
-                      <span className="font-mono text-muted-foreground/70 shrink-0 font-medium">
-                        Boundary / Known Limitation:
-                      </span>
-                      <span>{project.limitations}</span>
                     </div>
                   )}
 
