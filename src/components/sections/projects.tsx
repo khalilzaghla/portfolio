@@ -9,7 +9,9 @@ import {
   CheckCircle2,
   AlertCircle,
   ArrowUpRight,
+  FileText
 } from "lucide-react";
+import Link from "next/link";
 import { PROJECTS } from "@/lib/data/projects";
 import type { ProjectCategory } from "@/lib/schemas/project.schema";
 
@@ -178,6 +180,14 @@ export function Projects() {
 
                     {/* Links & Repository */}
                     <div className="flex items-center gap-2 shrink-0 pt-1">
+                      <Link
+                        href={`/projects/${project.slug}`}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-mono bg-primary text-primary-foreground hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        aria-label={`Read case study for ${project.title}`}
+                      >
+                        <FileText className="w-3.5 h-3.5" aria-hidden="true" />
+                        <span>Case Study</span>
+                      </Link>
                       {project.links.github && (
                         <a
                           href={project.links.github}
