@@ -43,6 +43,7 @@ export type CaseStudy = {
   results: ResultGroup[];
   limitations: string[];
   references: Reference[];
+  videos?: { src: string; label: string }[];
 };
 
 export const CASE_STUDIES: Record<string, CaseStudy> = {
@@ -409,6 +410,11 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
     ],
     references: [
       { title: "SlowFast Networks for Video Recognition", url: "https://arxiv.org/abs/1812.03982" }
+    ],
+    videos: [
+      { src: "/videos/slowfast/Enregistrement de l'écran 2026-09-12 123345.mp4", label: "Inference Demo 01" },
+      { src: "/videos/slowfast/Enregistrement de l'écran 2026-09-12 124122.mp4", label: "Inference Demo 02" },
+      { src: "/videos/slowfast/Enregistrement de l'écran 2026-09-12 124722.mp4", label: "Inference Demo 03" }
     ]
   }
 };

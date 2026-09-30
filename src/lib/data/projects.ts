@@ -278,7 +278,7 @@ const RAW_PROJECTS: readonly ProjectMeta[] = [
       },
     ],
     links: {
-      github: "https://github.com/khalilzaghla",
+      github: "https://github.com/khalilzaghla/slowfast_SL",
     },
     status: "completed",
   },

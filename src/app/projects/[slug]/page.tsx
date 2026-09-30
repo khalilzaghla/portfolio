@@ -2,8 +2,9 @@ import { PROJECTS } from "@/lib/data/projects";
 import { CASE_STUDIES } from "@/lib/data/case-studies";
 import { notFound } from "next/navigation";
 import { ArchitectureDiagram } from "@/components/sections/architecture-diagram";
+import { VideoGallery } from "@/components/ui/video-demo";
 import Link from "next/link";
-import { ArrowLeft, ExternalLink, Code2, FileText, CheckCircle2, AlertTriangle, BookOpen, Server, Cpu } from "lucide-react";
+import { ArrowLeft, ExternalLink, Code2, FileText, CheckCircle2, AlertTriangle, BookOpen, Server, Cpu, Video } from "lucide-react";
 import { Metadata } from "next";
 
 interface CaseStudyPageProps {
@@ -92,7 +93,13 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
             {project.links.github && (
               <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-zinc-900 border border-zinc-800 text-sm font-medium text-zinc-300 hover:text-zinc-100 hover:border-zinc-700 transition-all">
                 <Code2 className="w-4 h-4" />
-                Repository
+                View on GitHub
+              </a>
+            )}
+            {caseStudy?.videos && caseStudy.videos.length > 0 && (
+              <a href="#demo" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-zinc-900 border border-zinc-800 text-sm font-medium text-zinc-300 hover:text-zinc-100 hover:border-zinc-700 transition-all">
+                <Video className="w-4 h-4" />
+                Watch Demo
               </a>
             )}
             {project.links.demo && (
@@ -156,6 +163,20 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                 ))}
               </div>
             </section>
+
+            {/* Video Demonstration */}
+            {caseStudy.videos && caseStudy.videos.length > 0 && (
+              <section id="demo" className="scroll-mt-24">
+                <h2 className="text-2xl font-semibold text-zinc-100 mb-6 flex items-center gap-3">
+                  <Video className="w-6 h-6 text-pink-500/80" />
+                  Video Demonstration
+                </h2>
+                <p className="text-zinc-400 mb-8">Representative inference outputs from the implemented YOLOv8 + ByteTrack and SlowFast pipeline.</p>
+                <div className="bg-zinc-900/30 border border-zinc-800/50 rounded-xl p-6 md:p-8">
+                  <VideoGallery videos={caseStudy.videos} />
+                </div>
+              </section>
+            )}
 
             {/* Results & Metrics */}
             <section>
